@@ -6,9 +6,9 @@
 			<template v-for="(day, dayIndex) in calendar" :key="day.date">
 				<template v-for="(match, matchIndex) in day.matches" :key="match.id">
 					<div
-						:ref="isCurrent(match)"
 						class="flex"
 						:class="matchIndex == 0 && dayIndex !== 0 ? 'mt-4' : null"
+						:date="match.date"
 					>
 						<div class="w-24 sm:w-20">
 							<span v-if="matchIndex == 0" class="text-secondary/50">
@@ -119,31 +119,69 @@ const getMatches = async () => {
 
 onMounted(() => {
 	getMatches()
+
+	// const today = new Date().toDateString()
+
+	// setTimeout(() => {
+	const el = document.querySelector(`[date="${today}"]`)
+	console.log(el)
+
+	// 	el.scrollIntoView({
+	// 		behavior: 'smooth',
+	// 		block: 'center',
+	// 	})
+	// }, 2000)
 })
 
 const today = new Date().toDateString()
-const current = ref(null)
 
-console.log(current.value)
+watch(loading, async (isLoading) => {
+	console.log(loading.value, isLoading)
 
-setTimeout(() => {
-	console.log(current.value)
-}, 5000)
-
-const isCurrent = (match) => {
-	return today == match.date ? 'current' : null
-}
-
-watch(current, async (updated) => {
-	console.log(current.value)
-
-	if (updated && !inViewport(current.value[0])) {
+	if (!isLoading) {
 		setTimeout(() => {
-			current.value[0].scrollIntoView({
+			const el = document.querySelector(`[date="${today}"]`)
+			console.log('Inside watch', el)
+
+			el.scrollIntoView({
 				behavior: 'smooth',
 				block: 'center',
 			})
 		}, 800)
+
+		// if (!inViewport(el)) {
+		// setTimeout(() => {
+		// 	el.scrollIntoView({
+		// 		behavior: 'smooth',
+		// 		block: 'center',
+		// 	})
+		// }, 800)
+		// }
 	}
 })
+
+// const current = ref(null)
+
+// console.log(current.value)
+
+// setTimeout(() => {
+// 	console.log(current.value)
+// }, 5000)
+
+// const isCurrent = (match) => {
+// 	return today == match.date ? 'current' : null
+// }
+
+// watch(current, async (updated) => {
+// 	console.log(current.value)
+
+// 	if (updated && !inViewport(current.value[0])) {
+// 		setTimeout(() => {
+// 			current.value[0].scrollIntoView({
+// 				behavior: 'smooth',
+// 				block: 'center',
+// 			})
+// 		}, 800)
+// 	}
+// })
 </script>
