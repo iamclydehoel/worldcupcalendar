@@ -1,5 +1,12 @@
 import { createApp } from 'vue'
-import './assets/css/app.css'
-import App from './app.vue'
+import { createPinia } from 'pinia'
+import BodyScrollLock from '@/plugins/body-scroll-lock'
+import root from './app.vue'
+import './assets/styles/app.css'
 
-createApp(App).mount('#app')
+const app = createApp(root)
+const pinia = createPinia()
+
+app.use(pinia)
+app.use(BodyScrollLock)
+app.mount('#app')

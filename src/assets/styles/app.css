@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+	@apply leading-none h-full w-full cursor-default text-base select-none overscroll-none;
+}
+
+body {
+	@apply antialiased tabular-nums font-sans bg-tertiary text-secondary overscroll-none;
+}
+
+@layer base {
+	:root {
+		--color-primary: 46 204 113;
+		--color-secondary: 255 255 250;
+		--color-tertiary: 17 17 26;
+	}
+}
+
+@layer utilities {
+	.font-sans {
+		font-feature-settings: 'ss01';
+	}
+}
