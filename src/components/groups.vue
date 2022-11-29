@@ -78,7 +78,7 @@ import formatGroups from '@/assets/scripts/groups/format'
 import Loading from '@/components/loading.vue'
 import Error from '@/components/error.vue'
 
-const loading = ref(null)
+const loading = ref(true)
 const error = ref(null)
 
 const store = useTeamStore()
@@ -94,8 +94,6 @@ const toggleTeam = (team) => {
 const groups = ref([])
 
 const getGroups = async () => {
-	loading.value = true
-
 	try {
 		const response = await fetch('/api/groups')
 		const data = await response.json()
@@ -112,5 +110,9 @@ const getGroups = async () => {
 
 onMounted(() => {
 	getGroups()
+
+	setInterval(() => {
+		getGroups()
+	}, 60000)
 })
 </script>

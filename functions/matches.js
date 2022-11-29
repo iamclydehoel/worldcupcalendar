@@ -17,7 +17,7 @@ exports.handler = async (event, context) => {
 		const cachedResult = await redis.get('matches')
 
 		if (cachedResult) {
-			console.log('CACHE')
+			console.log('CACHE GROUPS')
 
 			return {
 				statusCode: 200,
@@ -35,9 +35,9 @@ exports.handler = async (event, context) => {
 
 		const data = await response.json()
 
-		redis.set('matches', JSON.stringify(data), 'EX', 60)
+		redis.set('matches', JSON.stringify(data), 'EX', 59)
 
-		console.log('FRESH')
+		console.log('FRESH GROUPS')
 
 		return { statusCode: 200, body: JSON.stringify(data) }
 	} catch (error) {

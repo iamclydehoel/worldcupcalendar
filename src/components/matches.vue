@@ -92,7 +92,7 @@ import inViewport from '@/assets/scripts/utilities/inViewport'
 import Loading from '@/components/loading.vue'
 import Error from '@/components/error.vue'
 
-const loading = ref(null)
+const loading = ref(true)
 const error = ref(null)
 
 const store = useTeamStore()
@@ -100,8 +100,6 @@ const store = useTeamStore()
 const calendar = ref([])
 
 const getMatches = async () => {
-	loading.value = true
-
 	try {
 		const response = await fetch('/api/matches')
 		const data = await response.json()
@@ -119,6 +117,10 @@ const getMatches = async () => {
 
 onMounted(() => {
 	getMatches()
+
+	setInterval(() => {
+		getMatches()
+	}, 60000)
 })
 
 const today = new Date().toDateString()
