@@ -123,8 +123,11 @@ onMounted(() => {
 
 const today = new Date().toDateString()
 const current = ref(null)
+console.log(current.value)
 
 watch(current, async (updated) => {
+	console.log(current.value)
+
 	if (updated && !inViewport(current.value[0])) {
 		setTimeout(() => {
 			current.value[0].scrollIntoView({
