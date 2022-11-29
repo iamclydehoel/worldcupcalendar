@@ -119,69 +119,22 @@ const getMatches = async () => {
 
 onMounted(() => {
 	getMatches()
-
-	// const today = new Date().toDateString()
-
-	// setTimeout(() => {
-	const el = document.querySelector(`[date="${today}"]`)
-	console.log(el)
-
-	// 	el.scrollIntoView({
-	// 		behavior: 'smooth',
-	// 		block: 'center',
-	// 	})
-	// }, 2000)
 })
 
 const today = new Date().toDateString()
 
 watch(loading, async (isLoading) => {
-	console.log(loading.value, isLoading)
-
 	if (!isLoading) {
 		setTimeout(() => {
 			const el = document.querySelector(`[date="${today}"]`)
-			console.log('Inside watch', el)
 
-			el.scrollIntoView({
-				behavior: 'smooth',
-				block: 'center',
-			})
+			if (!inViewport(el)) {
+				el.scrollIntoView({
+					behavior: 'smooth',
+					block: 'center',
+				})
+			}
 		}, 800)
-
-		// if (!inViewport(el)) {
-		// setTimeout(() => {
-		// 	el.scrollIntoView({
-		// 		behavior: 'smooth',
-		// 		block: 'center',
-		// 	})
-		// }, 800)
-		// }
 	}
 })
-
-// const current = ref(null)
-
-// console.log(current.value)
-
-// setTimeout(() => {
-// 	console.log(current.value)
-// }, 5000)
-
-// const isCurrent = (match) => {
-// 	return today == match.date ? 'current' : null
-// }
-
-// watch(current, async (updated) => {
-// 	console.log(current.value)
-
-// 	if (updated && !inViewport(current.value[0])) {
-// 		setTimeout(() => {
-// 			current.value[0].scrollIntoView({
-// 				behavior: 'smooth',
-// 				block: 'center',
-// 			})
-// 		}, 800)
-// 	}
-// })
 </script>
