@@ -6,7 +6,7 @@
 			<template v-for="(day, dayIndex) in calendar" :key="day.date">
 				<template v-for="(match, matchIndex) in day.matches" :key="match.id">
 					<div
-						:ref="today == match.date ? 'current' : null"
+						:ref="isCurrent(match)"
 						class="flex"
 						:class="matchIndex == 0 && dayIndex !== 0 ? 'mt-4' : null"
 					>
@@ -123,10 +123,16 @@ onMounted(() => {
 
 const today = new Date().toDateString()
 const current = ref(null)
+
 console.log(current.value)
+
 setTimeout(() => {
 	console.log(current.value)
 }, 5000)
+
+const isCurrent = (match) => {
+	return today == match.date ? 'current' : null
+}
 
 watch(current, async (updated) => {
 	console.log(current.value)
