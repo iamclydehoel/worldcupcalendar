@@ -124,6 +124,9 @@ onMounted(() => {
 const today = new Date().toDateString()
 const current = ref(null)
 console.log(current.value)
+setTimeout(() => {
+	console.log(current.value)
+}, 5000)
 
 watch(current, async (updated) => {
 	console.log(current.value)
