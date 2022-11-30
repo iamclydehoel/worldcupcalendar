@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 html {
-	@apply leading-none h-full w-full cursor-default text-base select-none touch-pan-x touch-pan-y overscroll-none;
+	@apply leading-none h-full w-full cursor-default text-base select-none touch-manipulation overscroll-none;
 }
 
 body {
