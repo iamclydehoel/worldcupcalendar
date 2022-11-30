@@ -8,11 +8,7 @@
 	}
 
 	body {
-		@apply antialiased tabular-nums font-sans bg-tertiary text-secondary touch-manipulation overscroll-none;
-	}
-
-	* {
-		@apply touch-pan-x touch-pan-y;
+		@apply antialiased tabular-nums font-sans bg-tertiary text-secondary touch-pan-x touch-pan-y overscroll-none;
 	}
 
 	:root {
@@ -20,19 +16,19 @@
 		--color-secondary: 255 255 250;
 		--color-tertiary: 17 17 26;
 	}
+
+	@font-face {
+		font-family: 'Atlas Grotesk';
+		src: url('../fonts/atlas-grotesk.woff2') format('woff2'),
+			url('../fonts/atlas-grotesk.woff') format('woff');
+		font-weight: normal;
+		font-style: normal;
+		font-display: swap;
+	}
 }
 
 @layer utilities {
 	.font-sans {
 		font-feature-settings: 'ss01';
 	}
-}
-
-@font-face {
-	font-family: 'Atlas Grotesk';
-	src: url('../fonts/atlas-grotesk.woff2') format('woff2'),
-		url('../fonts/atlas-grotesk.woff') format('woff');
-	font-weight: normal;
-	font-style: normal;
-	font-display: swap;
 }
