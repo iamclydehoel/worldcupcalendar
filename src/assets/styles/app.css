@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 html {
-	@apply leading-none h-full w-full cursor-default text-base select-none overscroll-none;
+	@apply leading-none h-full w-full cursor-default text-base select-none touch-pan-x touch-pan-y overscroll-none;
 }
 
 body {
-	@apply antialiased tabular-nums font-sans bg-tertiary text-secondary touch-pan-x touch-pan-y overscroll-none;
+	@apply antialiased tabular-nums font-sans bg-tertiary text-secondary overscroll-none;
 }
 
 @layer base {
