@@ -2,15 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-	@apply leading-none h-full w-full cursor-default text-base select-none touch-pan-x touch-pan-y overscroll-none;
-}
-
-body {
-	@apply antialiased tabular-nums font-sans bg-tertiary text-secondary touch-manipulation overscroll-none;
-}
-
 @layer base {
+	html {
+		@apply leading-none h-full w-full cursor-default text-base select-none touch-pan-x touch-pan-y overscroll-none;
+	}
+
+	body {
+		@apply antialiased tabular-nums font-sans bg-tertiary text-secondary touch-manipulation overscroll-none;
+	}
+
+	* {
+		@apply touch-pan-x touch-pan-y;
+	}
+
 	:root {
 		--color-primary: 46 204 113;
 		--color-secondary: 255 255 250;
