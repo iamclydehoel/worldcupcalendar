@@ -26,8 +26,8 @@ body {
 
 @font-face {
 	font-family: 'Atlas Grotesk';
-	src: url('../fonts/atlas-grotesk-latin.woff2') format('woff2'),
-		url('../fonts/atlas-grotesk-latin.woff') format('woff');
+	src: url('../fonts/atlas-grotesk.woff2') format('woff2'),
+		url('../fonts/atlas-grotesk.woff') format('woff');
 	font-weight: normal;
 	font-style: normal;
 	font-display: swap;
