@@ -34,8 +34,8 @@
 
 							<template v-if="match.status !== 'TIMED'">
 								<span class="inline-flex items-baseline sm:w-8 sm:justify-end gap-0.5">
-									<small v-if="match.home.penalties" class="tracking-wider">
-										({{ match.home.penalties }})
+									<small v-if="match.home.penalties || match.away.penalties" class="tracking-wider">
+										({{ match.home.penalties || '0' }})
 									</small>
 
 									{{ match.home.goals }}
@@ -49,8 +49,11 @@
 								</span>
 
 								<span class="inline-flex items-baseline order-4 sm:order-3 sm:w-8 gap-0.5">
-									<small v-if="match.away.penalties" class="tracking-wider sm:order-last">
-										({{ match.away.penalties }})
+									<small
+										v-if="match.away.penalties || match.home.penalties"
+										class="tracking-wider sm:order-last"
+									>
+										({{ match.away.penalties || '0' }})
 									</small>
 
 									{{ match.away.goals }}
